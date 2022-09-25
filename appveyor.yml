@@ -5,6 +5,8 @@ environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
 
 init:
+  - echo on
+  - systeminfo
   - set KindleInstExe=KindleForPC-installer-1.17.44170.exe
   - set CalInstExe=calibre-4.23.0.msi
   - set DeDRMPluginZip=DeDRM_tools_6.8.1.zip
@@ -16,15 +18,24 @@ install:
 
   - curl.exe -o "BOOK.azw"  -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/BOOK.azw" > nul
 
-build_script:
-
-  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle /f || date /t
-  - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
-
   # Kindle for PC optional self cleanup
   - rmdir /s /q "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content" || date /t
   
   # Kindle for PC cleanup
   - rmdir /s /q "%LOCALAPPDATA%\Amazon\SendToKindle" || date /t
 
+  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle /f || date /t
+  - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
+  
+build_script:
+
+  # Kindle for PC
+  - KInst.exe /S
+  - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
+  - ren %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.exe renderer-test.xxx || date /t
+ 
+  # Kindle starts
+  "%LOCALAPPDATA%\Amazon\Kindle\application\Kindle.exe"
+  
+  # Wait for help
 
