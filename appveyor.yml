@@ -13,7 +13,7 @@ init:
 
 install:
   # - curl.exe -o "DInst.zip" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%DeDRMPluginZip%"
-  # - curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"
+  - curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"
   # - curl.exe -o "CInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%CalInstExe%"
 
   - curl.exe -o "BOOK.azw"  -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/BOOK.azw" > nul
