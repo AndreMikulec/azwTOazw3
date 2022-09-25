@@ -35,7 +35,8 @@ build_script:
   - ren %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.exe renderer-test.xxx || date /t
  
   # Kindle starts
-  "%LOCALAPPDATA%\Amazon\Kindle\application\Kindle.exe"
+  - set PATH=%LOCALAPPDATA%\Amazon\Kindle\application;%PATH%
+  - Kindle.exe"
   
   # Wait for help
 
