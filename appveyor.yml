@@ -18,12 +18,14 @@ install:
 
 build_script:
 
+  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle
+  - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
+
   - echo building
   # Kindle for PC optional self cleanup
-  - rmdir "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content" /s /q > nul
+  - rmdir /s /q "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content" > nul
   
   # Kindle for PC cleanup
-  - rmdir "%LOCALAPPDATA%\Amazon\SendToKindle" /s /q > nul
+  - rmdir /s /q "%LOCALAPPDATA%\Amazon\SendToKindle" > nul
 
-  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle > nul
-  - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
+
