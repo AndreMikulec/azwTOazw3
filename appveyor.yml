@@ -18,7 +18,7 @@ install:
 
 build_script:
 
-  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle
+  - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle /f
   - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
 
   - echo building
