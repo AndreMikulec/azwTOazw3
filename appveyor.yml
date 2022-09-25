@@ -37,7 +37,7 @@ build_script:
   # Kindle starts
   - set PATH=%LOCALAPPDATA%\Amazon\Kindle\application;%PATH%
   - echo %PATH%
-  - dir %LOCALAPPDATA%\Amazon\Kindle\application
+  - dir "%LOCALAPPDATA%\Amazon\Kindle\application"
   - Kindle.exe
   
   # Wait for help
