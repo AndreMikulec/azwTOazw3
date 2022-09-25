@@ -5,13 +5,16 @@ environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
 
 init:
-
-  set KindleInstExe=KindleForPC-installer-1.17.44170.exe
-  set CalInstExe=calibre-4.23.0.msi
-  set DRMZip=DeDRM_tools_6.8.1.zip
+  - set KindleInstExe=KindleForPC-installer-1.17.44170.exe
+  - set CalInstExe=calibre-4.23.0.msi
+  - set DeDRMPluginZip=DeDRM_tools_6.8.1.zip
 
 install:
+  - curl.exe -o "DInst.zip" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%DeDRMPluginZip%"
+  - curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"
+  - curl.exe -o "CInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%CalInstExe%"
 
-  curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"
-  curl.exe -o "CInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%CalInstExe%"
-  curl.exe -o "DInst.zip" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%DRMZip%"
+build_script:
+  - echo building
+
+  
