@@ -3,6 +3,7 @@ clone_depth: 1
 
 environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
+  APPVEYOR_RDP_PASSWORD: Th3Bu1ld
 
 init:
   - echo on
@@ -45,7 +46,7 @@ build_script:
   # - Kindle.exe
 
   # Wait for help
-
+  - ps: iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
 cache:
   - "KInst.exe"
