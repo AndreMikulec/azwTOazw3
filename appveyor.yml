@@ -72,6 +72,8 @@ build_script:
   - calibre-customize.exe --add DeDRM_plugin.zip
   - calibre-customize.exe --add Obok_plugin.zip
   
+  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
+  
   # Have Calibre Perform DeDRM
   - calibredb.exe add "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content\*.azw" --with-library="%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM"
   
