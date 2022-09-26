@@ -80,8 +80,10 @@ build_script:
   # but. I would rather not deal with spaces in the "forfiles"
 
   # Have Calibre Perform DeDRM
+  - echo
   - pushd "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content"
   - forfiles /m *.azw /c "cmd /c calibredb.exe add @path --with-library=C:\DeDRM"
+  - echo returning
   - popd
 
   # collect the folders and subfolders and new .azw3 files
