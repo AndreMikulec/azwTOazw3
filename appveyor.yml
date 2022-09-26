@@ -32,7 +32,7 @@ install:
   # Useful on a local machine (especially if one changed one's Amazon password lately.)
   # Not useful on Appveyor build server
   - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle /f || date /t
-  
+
   # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
   - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
 
@@ -57,12 +57,13 @@ build_script:
   # set KindleExePath=%ProgramFiles(x86)%\Amazon\Kindle
   # - Kindle.exe
 
-  # See the OTHER.md, 
-  # manually perform the section "In the Appveyor desktop, Manually Go and Do"
+  # See the OTHER.md
+  # (In the future, I would like to use AutoIt or other software to automate this.)
+  # Manually perform the section "In the Appveyor desktop, Manually Go and Do"
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
-  # Install Calibre
-  - MsiExec.exe /i CInst.msi /qn
+  # Install Calibre (and wait for the install to finish)
+  - start /wait MsiExec.exe /i CInst.msi /qn
 
   # Add the Plugins into Calibre
   - 7z x DInst.zip
@@ -71,16 +72,23 @@ build_script:
   #
   - calibre-customize.exe --add DeDRM_plugin.zip
   - calibre-customize.exe --add Obok_plugin.zip
-  
-  - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
-  
+
+  # Note, better target locations are the following:
+  # "%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM"
+  # or
+  # "%HOMEDRIVE%%HOMEPATH%\Documents\Calibre Library\DeDRM"
+  # but. I would rather not deal with spaces in the "forfiles"
+
   # Have Calibre Perform DeDRM
-  - calibredb.exe add "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content\*.azw" --with-library="%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM"
-  
+  - pushd "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content"
+  - forfiles /m *.azw /c "cmd /c calibredb.exe add @path --with-library=C:\DeDRM"
+  - popd
+
   # collect the folders and subfolders and new .azw3 files
-  # Calibre has is OWN logic proprietary logic.  
+  # Calibre has is OWN logic proprietary logic.
   # At this time I am just going after [folders and] files that end in .azw3
-  - 7z a -t7z -mmt24 -mx7 -r books.7z "%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM\*.azw3"
+  - 7z a -t7z -mmt24 -mx7 -r books.7z C:\DeDRM\*.azw3
+  - 7z l books.7z
 
 cache:
   - KInst.exe

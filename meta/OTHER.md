@@ -67,8 +67,8 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
   6. git commit -m "touch"
   7. git push -u origin master (or git push -u main)
   8. Find one's Amazon `logon` and `password` and have it handy
-  9. Windows -> Start -> Command Prompt -> 
-     Type this -> `rdp` (Appearing will be a small window called `Remote Desktop Connections`)
+  9. Windows -> Start -> Type this -> `rdp` 
+  (Appearing will be a small window called `Remote Desktop Connections`)
   10. Browse to the URL (and change USERNAME to one's USERNAME): `https://ci.appveyor.com/project/USERNAME/azwtoazw3`
   11. From the blue output, and near the bottom, collect the Server (and port) and Username.
       One is looking for something like this (and your IP:Port will be different):
@@ -82,23 +82,34 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
       In the lower left find `Show Options` and to it's right, click on the `down arrow`
   13. In `User name` enter the Username (This is often `appveyor`.) 
   14. Press the button `Connect`
-  15. At the 'warning', press the button`Yes`
-  16. At the password prompt, enter the password 
+  15. In the Remote Desktop Connection dialog of "Certificate errors warning" press the button`Yes`
+  16. In the "Enter your credentials" small window, at the password prompt, enter the password 
       from the appveyor.yml environment section variable `APPVEYOR_RDP_PASSWORD`
 
 ### In the Appveyor desktop, Manually Go and Do
 
 (in the future I would HIGHLY prefer to use AutoIt or similar software automate SOME of this)
 
-  1. At the left column, double click on Google Chrome. (This seems to be required from Amazon.)
-  2. Windows -> Start -> (near the top) Recently Added -> Kindle
-  3. Kindle -> Tools -> Options -> TURN OFF: [ ] Automatically install updates when they are available without asking me.
-  4. Kindle -> Tools -> Sync and Check for New Items
+  1. On the Windows Desktop on the left side, click the icon "Kindle"
+     or, alternately, do Windows -> Start -> (near the top) Recently Added -> Kindle
+  2. Kindle -> Tools -> Options -> 
+     TURN OFF: [ ] Automatically install updates when they are available without asking me.
+     Press the button `Save`.
+  3. Kindle -> Tools -> Sync and Check for New Items, the "Register Kindle" window appears
      Enter one's Amazon `login`.
      Enter one's Amazon `password`.
      At the bottom, press the big yellow button `Connect using Secure Server`
-  5. In the Kindle GUI `"Library All" display area`, 
-     of each the book(s) of interest, and one at at at time. Right click and choose `Download`
+  4. Authentication also occur externally, e.g. a text message of verification.
+     Perform that external verification.
+     At the end of that verification, return here.
+     Close (x" out of) that window.
+     Redo Step (2).
+  5. In the Kindle GUI, below the word "Library", make sure "All" is highlighted.
+     In "Library All" display area, of each the book(s) of interest, 
+     and one at at at time. Right click and choose `Download`.
+     As each is "Right clicked Download(ed)", notice the "check, in each book in the lower left corner.
+     At the end of all "Right clicked Download(ed)"s 
+     notice, on the left side, "Downloaded 0" changes to Downloaded #".
      (If no book(s) or one's `book(s) of interest` IS\ARE NOT SEEN,
      5.1 then, using Google Chrome, browse to the URL: https://www.amazon.com, 
      5.2 then, login with one's Amazon `login` and `password`,
@@ -123,14 +134,18 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
      and right from the word `Library`press the `circular pointing arrows icon` and this will refresh the book(s) 
   7. If not already done, In the Kindle GUI `"Library All" display area`, 
      of each the book(s) of interest, and one at at at time. Right click and choose Download.
+     As each is "Right clicked Download(ed)", notice the "check, in each book in the lower left corner.
+     At the end of all "Right clicked Download(ed)"s 
+     notice, on the left side, "Downloaded 0" changes to Downloaded #".
   8. Verify, the book(s) are downloaded.
      Windows -> Start -> Command Prompt -> 
      Type this -> `dir "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content"`
      The number of `.azw` files seen, must(should) match the number of book(s) downloaded.
-  9. On the [upper right are of the] desktop, select text file icon `"something something.txt"`.
-     Right click and choose Delete. !!! THIS `DELETE ICON` IS REQUIRED TO EXIT THE APPVEYOR DESKTOP !!! 
-     The Appveyor build continues and finishes.
-     
+  9. Kindle -> File -> Exit
+  10. On the [upper right are of the] desktop, select the icon `Delete me to continue build`.
+      Right click and choose Delete. !!! THIS `DELETE ICON` IS REQUIRED TO EXIT THE APPVEYOR DESKTOP !!! 
+      The Appveyor build continues and finishes.
+
 ### In the Local user desktop, Manually Go and Do
      
   1. After the build is done, on one's local computer, collect the artifacts (that contains the .azw3 files),
@@ -138,9 +153,8 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
      https://ci.appveyor.com/project/USERNAME/azwtoazw3/build/artifacts
   2. Download the books.7z file artifact
   3. On that same web page, DELETE THAT artifact
-  4. On the local desktop use 7-zip to extract from the books.7z folders, files, the new .awz3 files
+  4. On the local desktop use 7-zip to extract 
+     from the books.7z folders and files, the new .awz3 files
   5. Use Calibre (or other software), to read those .awz3 files
 
  
-
-
