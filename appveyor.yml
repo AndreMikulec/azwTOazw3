@@ -83,8 +83,10 @@ build_script:
   - echo
   - pushd "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content"
   - forfiles /m *.azw /c "cmd /c calibredb.exe add @path --with-library=C:\DeDRM"
-  - echo returning
-  - popd
+  # Getting strange error
+  # - popd
+  # I SHOULD NOT HARD CODE THIS
+  - cd "C:\projects\azwtoazw3"
 
   # collect the folders and subfolders and new .azw3 files
   # Calibre has is OWN logic proprietary logic.
