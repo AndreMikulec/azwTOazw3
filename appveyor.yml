@@ -6,49 +6,85 @@ environment:
   APPVEYOR_RDP_PASSWORD: Th3Bu1ld
 
 init:
-  - echo on
   - systeminfo
   - set APPVEYOR_SAVE_CACHE_ON_ERROR=true
   - set KindleInstExe=KindleForPC-installer-1.17.44170.exe
-  - set CalInstExe=calibre-4.23.0.msi
+  - set CalInstMsi=calibre-4.23.0.msi
   - set DeDRMPluginZip=DeDRM_tools_6.8.1.zip
 
 install:
-  # - curl.exe -o "DInst.zip" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%DeDRMPluginZip%"
 
-  - if not exist "KInst.exe" ( curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%" )
+  - if not exist KInst.exe ( curl.exe -o KInst.exe -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"  )
+  - if not exist CInst.msi ( curl.exe -o CInst.msi -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%CalInstMsi%"     )
+  - if not exist DInst.zip ( curl.exe -o DInst.zip -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%DeDRMPluginZip%" )
 
-  # - curl.exe -o "KInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%KindleInstExe%"
-  # - curl.exe -o "CInst.exe" -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/%CalInstExe%"
+  # Future
+  # - curl.exe -o book.azw  -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/BOOK.azw" > nul
 
-  - curl.exe -o "BOOK.azw"  -L "https://github.com/AndreMikulec/azwTOazw3/releases/download/0.0.0.0.0.GITHUBCACHE/BOOK.azw" > nul
-
-  # Kindle for PC optional self cleanup
+  # Kindle for PC optional self cleanup.  This is optional.  This is just personal tidying.
+  # (Useful on a local machine. Not useful on Appveyor build server)
   - rmdir /s /q "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content" || date /t
 
   # Kindle for PC cleanup
+  # Of these software versions, I do not think that this is useful: Path seems to never exist, before nor after a build.
   - rmdir /s /q "%LOCALAPPDATA%\Amazon\SendToKindle" || date /t
 
+  # Useful on a local machine (especially if one changed one's Amazon password lately.)
+  # Not useful on Appveyor build server
   - reg delete HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle /f || date /t
+  
+  # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
   - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
 
 build_script:
 
-  # Kindle for PC
+  # Kindle for PC install
   - KInst.exe /S
+    # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
   - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
+    # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
   - ren %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.exe renderer-test.xxx || date /t
 
-  # Kindle starts
-  - set PATH=%LOCALAPPDATA%\Amazon\Kindle\application;%PATH%
-  - echo %PATH%
-  # - dir "%LOCALAPPDATA%\Amazon\Kindle\application"
+  # Kindle starts NOT (YET) USED
+  #
+  # a typical home computer
+  # on Microsoft Windows 10 Professional, %KindleExePath%: "%LOCALAPPDATA%\Amazon\Kindle\application"
+  #
+  # a typical server (e.g. this Appveyor build server)
+  # on Microsoft Windows Server 2019 Datacenter (this!), %KindleExePath%: %ProgramFiles(x86)%\Amazon\Kindle
+  #
+  # NOT (YET) USED
+  # set KindleExePath=%ProgramFiles(x86)%\Amazon\Kindle
   # - Kindle.exe
 
-  # Wait for help
+  # See the OTHER.md, 
+  # manually perform the section "In the Appveyor desktop, Manually Go and Do"
   - ps: $blockRdp = $true; iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/appveyor/ci/master/scripts/enable-rdp.ps1'))
 
+  # Install Calibre
+  - MsiExec.exe /i CInst.msi /qn
+
+  # Add the Plugins into Calibre
+  - 7z x DInst.zip
+  - dir
+  - set PATH=%ProgramFiles(x86)%\Calibre2;%PATH%
+  #
+  - calibre-customize.exe --add DeDRM_plugin.zip
+  - calibre-customize.exe --add Obok_plugin.zip
+  
+  # Have Calibre Perform DeDRM
+  - calibredb.exe add "%HOMEDRIVE%%HOMEPATH%\Documents\My Kindle Content\*.azw" --with-library="%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM"
+  
+  # collect the folders and subfolders and new .azw3 files
+  # Calibre has is OWN logic proprietary logic.  
+  # At this time I am just going after [folders and] files that end in .azw3
+  - 7z a -t7z -mmt24 -mx7 -r books.7z "%HOMEDRIVE%%HOMEPATH%\Calibre Library\DeDRM\*.azw3"
+
 cache:
-  - "KInst.exe"
+  - KInst.exe
+  - CInst.msi
+  - DInst.zip
 
-
+artifacts:
+  - path: books.7z
+    name: books.7z
