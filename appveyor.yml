@@ -47,7 +47,7 @@ build_script:
     # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
   - reg add "HKEY_CURRENT_USER\SOFTWARE\Amazon\Kindle\User Settings" /v "isKRFDRendererSupported" /t REG_SZ /d "false" /f
     # Of these software versions, I do not think that this is useful: Seems to be ignored (not used)
-  - ren %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.exe renderer-test.xxx || date /t
+  - ren %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.exe %LOCALAPPDATA%\Amazon\Kindle\application\renderer-test.xxx || date /t
 
   # Kindle starts NOT (YET) USED
   #
