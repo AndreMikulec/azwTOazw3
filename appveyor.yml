@@ -1,6 +1,10 @@
 version: 1.0.{build}.{branch}
 clone_depth: 1
 
+skip_commits:
+  files:
+    - '**/*.md
+
 environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
   APPVEYOR_RDP_PASSWORD: Th3Bu1ld
