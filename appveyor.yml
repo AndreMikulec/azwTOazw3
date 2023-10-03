@@ -3,7 +3,7 @@ clone_depth: 1
 
 skip_commits:
   files:
-    - '**/*.md
+    - '**/*.md'
 
 environment:
   APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2022
