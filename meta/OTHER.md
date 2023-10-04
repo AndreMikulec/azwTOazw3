@@ -1,4 +1,4 @@
-### Summary
+# Summary - Amazon books published before Jan 3 2023
 
 This is based on
 ```
@@ -172,4 +172,206 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
        from the books.7z folders and files, the new .awz3 files
     5. Use Calibre (or other software), to read those .awz3 files
 
- 
+
+# Summary -Amazon books published since Jan 3 2023
+
+ ```
+From an error message, seen October 3, 2023, a newer 2023 book, 
+REQUIRES and Amazon Kindle for PC update
+when I try to read the .awz in calibre-4.23.0.msi\DeDRM_tools_6.8.1.zip 
+and I am required to upgrade the NEWER KindleForPC-installer-2.0.70350.exe 
+and THAT .azw file was downloaded using the NEWER KindleForPC-installer-2.0.70350.exe
+(instead of the older KindleForPC-installer-1.17.44170.exe)
+```
+
+calibre-4.23.0.msi\DeDRM_tools_6.8.1.zip conversion error message:
+```
+This is an Amazon KFX book. It cannot be processed. 
+See https://www.mobileread.com/forums/showthread.php?t=283371 
+for information on how to handle KFX books. (Error Code: 1)
+```
+
+
+https://www.mobileread.com/forums/showthread.php?t=351285
+```
+Books published after January 3, 2023 
+cannot be downloaded using earlier versions (1.26 and prior) of Kindle for PC.
+While the newest version (1.39) of Kindle for PC will download them, 
+it will be in a version of KFX that DeDRM cannot break.
+Except for books only available as KFX, 
+books published before January 3 are still currently able to be downloaded 
+in a format that can be DeDRM'd.
+Books borrowed from Kindle Unlimited can still be downloaded 
+on K4PC <1.26 if it was published before January 3.
+
+Download and Transfer
+
+If you have an e-Ink Kindle, "Download and Transfer" is still available for purchased books, 
+regardless of when they were published. 
+The DRM can be removed from these files using the DeDRM plugin.
+However, books borrowed from Kindle Unlimited are not eligible for Download & Transfer.
+
+Check if the books are available on other websites that offer DRM-free 
+or more easily-removed ADE (Adobe Digital Editions) DRM:
+
+eBooks.com - https://www.ebooks.com/en-ca/
+Kobo - https://www.kobo.com/
+Google Play - https://play.google.com/store/books
+Smashwords - https://www.smashwords.com/
+Feedbooks - https://www.feedbooks.com/
+Book Republic, Italian. - https://www.bookrepublic.it/
+Baen, for science fiction & fantasy. - https://www.baen.com/
+
+https://www.overdrive.com/ - allows borrowing books
+
+many libraries offer non-resident cards
+Non-Resident Library Cards
+MORE
+https://www.mobileread.com/forums/showthread.php?t=348192
+
+```
+
+https://www.mobileread.com/forums/showthread.php?t=283371
+```
+Important update: Amazon has made a change to their service 
+so the books published since Jan 3 2023 can no longer be downloaded
+ using Kindle for PC or Mac versions prior to 1.39. 
+(Details in this thread.) 
+This means that methods 1, 2, and 4 described below are no longer effective for those books. 
+Methods 3 and 5 still work. 
+There is also a new method (#6) using an old version of the Kindle for Android app described here.
+
+Methods 3 and 5 . . .
+```
+
+Method 3 - Use an e-ink Kindle instead 
+https://www.mobileread.com/forums/showthread.php?t=283371
+```
+BUY PHYSICAL HARDWARE: the e-ink Kindle.
+
+Import the downloaded file into calibre using the same procedure 
+that you would use for a file from Kindle for PC.
+
+Note that Download & Transfer is not available for every book. 
+Books borrowed through Kindle Unlimited or Prime Lending do not have this option. 
+And there are other miscellaneous categories of books where this is unavailable.
+```
+
+Kindle (2022 release)
+$ 99.99 - Seen October 3, 2023
+https://www.amazon.com/kindle-the-lightest-and-most-compact-kindle/dp/B09SWW583J
+
+Method 5 - Choose books not available in KFX format
+https://www.mobileread.com/forums/showthread.php?t=283371
+```
+Books that are unavailable in KFX format.
+Unfortunately these are only a very small subset of the Kindle books available on Amazon.
+
+```
+
+Method 6 - Use an old version of Kindle for Android
+https://www.mobileread.com/forums/showthread.php?t=283371
+```
+The Kindle for Android app can be run using emulator software on just about any system. 
+An Android device is not required.
+```
+
+DRM workaround: Kindle for Android 
+https://www.mobileread.com/forums/showthread.php?t=352278
+```
+SEE the DETAILS in this ARTICLE.
+```
+
+DRM workaround: Kindle for Android
+https://www.mobileread.com/forums/showthread.php?t=352278
+1. Acquire SDK Platform Tools to get adb.exe (Android Debug Bridge)
+    and an APK for an older version of Kindle for Android, 4.17 and below.. 
+    I used 4.16.0.75.
+
+```
+Amazon Kindle 4.16.0.75-1145045067
+MD5 hash of 1ebe31041db4824c9f83a43d04d74668 
+verify MD5 hash at https://emn178.github.io/online-tools/md5_checksum.html
+FILE com.amazon.kindle-4.16.0.75-1145045067-minAPI16.apk
+http://www.oldversion.com/android/com-amazon-kindle-4-16-0-75-1145045067
+
+Note that there are reports that the apk won't work for Android 11, 
+and that at least on Android 10 the app may attempt to force the user to upgrade to download books. 
+32-bit Nougat on Bluestacks is confirmed to work.
+
+one user reports success using 4.16.0.75 in Android Emulator 
+(part of Android Studio), albeit with severe performance penalties
+```
+
+DeDRM Plugin (v6.7.0)
+https://github.com/apprenticeharper/DeDRM_tools/releases/download/v6.7.0/DeDRM_tools_6.7.0.zip
+https://github.com/apprenticeharper/DeDRM_tools/releases
+This plugin removes DRM from ebooks when they are imported into calibre.
+DeDRM_tools_6.8.1/DeDRM_Plugin/DeDRM_Help.htm
+
+
+2. Follow these instructions to extract your Kindle key and import to DeDRM.
+https://github.com/noDRM/DeDRM_tools/blob/master/DeDRM_plugin/DeDRM_Kindle%20for%20Android%20Key_Help.htm
+"DeDRM_tools_6.8.1.zip\DeDRM_Plugin.zip\DeDRM_EInk Kindle Serial Number_Help.htm"
+```
+Getting the Kindle for Android backup file
+
+Obtain and install adb (Android Debug Bridge) on your computer. 
+Enable developer mode on your Android device. 
+Connect your device to your computer with a USB cable.
+Open up a command line (Terminal on Mac OS X and cmd.exe on Windows) 
+adb backup com.amazon.kindle
+(A file "backup.ab" should be created in your home directory.)
+
+```
+
+Android 7.0 was officially released on August 22, 2016
+https://en.wikipedia.org/wiki/Android_Nougat
+
+one user reports success using 4.16.0.75 in Android Emulator 
+(part of Android Studio), albeit with severe performance penalties.
+
+
+3. After downloading your book
+```
+Look in /Android/data/com.amazon.kindle/files/ 
+for PRC files inside ASIN-labelled subfolders. Copy it out and DeDRM it.
+
+(Bluestacks has a preinstalled "Media Manager" app that allows you to
+ export the file to the OS.)
+```
+
+NOTE, 64bit bluestacks method . . .
+```
+DuckieTigger 
+
+Download Kindle for Android version 8.51.1.0 
+(oldversion doesn't have it, 
+I used apkpure Kindle for Android version 8.51.1.0, 
+the arm64-v8a will only work for 64bit Bluestacks 
+and 
+the armeabi-v7a will work for 32bit and 64bit Bluestacks)
+FILE Amazon Kindle_8.51.1.0(1.3.272119.0)_Apkpure_arm64-v8a.apk
+FILE Amazon Kindle_8.51.1.0(1.3.272119.0)_Apkpure_armeabi-v7a.apk
+https://apkpure.com/amazon-kindle/com.amazon.kindle/variant/8.51.1.0(1.3.272119.0)-APK
+
+```
+
+Using
+```
+Using (from that Retro Software Site)
+BlueStacks 5.0.220.1003 32-bit Android
+a.k.a BlueStacks 5.0.220.1003 N32
+
+Download  BlueStacks App Player
+BlueStacks App Player 5.0.220.1003
+BlueStacks_App_Player_v5.0.220.1003.exe
+https://www.filepuma.com/download/bluestacks_app_player_5.0.220.1003-28999/
+
+OnePlus 5
+OS	Android 7.1.1 (Nougat), upgradable to Android 10, OxygenOS 10.0.0
+https://www.gsmarena.com/oneplus_5-8647.php
+
+NOTE: Bluestacks 5 (After I turn the "Android Debug bridge" ON)
+Settings -> Advanced -> Android Debug bridge -> Connect to Android at 127.0.0.1:5555
+```
