@@ -384,3 +384,20 @@ https://www.gsmarena.com/oneplus_5-8647.php
 NOTE: Bluestacks 5 (After I turn the "Android Debug bridge" ON)
 Settings -> Advanced -> Android Debug bridge -> Connect to Android at 127.0.0.1:5555
 ```
+
+Delivered an Amazom book published in July 2024
+```
+No need existed to use the Android Debug Bridge.
+I just manually installed the file 
+com.amazon.kindle-4.16.0.75-1145045067-minAPI16.apk
+using the BlueStacks option "Install APK" [file].
+
+The target (from the Amazon web site Devices tab) was . . .
+AndreMikulec's 2nd Android Device
+Email : andre_mikulec_<OMITTED>@kindle.com
+Last registered on
+October 4, 2023
+
+That worked!
+```
+
