@@ -1,3 +1,12 @@
+# Obtaining and verifying older versions of Kindle for PC/Mac software
+https://www.mobileread.com/forums/showthread.php?t=283371
+
+command:
+`certutil -hashfile <filename> SHA256`
+
+In MacOS use the command:
+`shasum -a 256 <filename>`
+
 # Summary - Amazon books published before Jan 3 2023
 
 This is based on
