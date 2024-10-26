@@ -385,12 +385,52 @@ NOTE: Bluestacks 5 (After I turn the "Android Debug bridge" ON)
 Settings -> Advanced -> Android Debug bridge -> Connect to Android at 127.0.0.1:5555
 ```
 
-Delivered an Amazom book published in July 2024
+Deliver an Amazom book
 ```
 No need existed to use the Android Debug Bridge.
 I just manually installed the file 
 com.amazon.kindle-4.16.0.75-1145045067-minAPI16.apk
 using the BlueStacks option "Install APK" [file].
+
+In the Bluestacks android Kindle com.amazon.kindle-4.16.0.75-1145045067-minAPI16
+login to Amazon with my username and password.
+My Books will be displayed.
+Tap my book of interest.
+(and now the book will open up to the cover page)
+Browse [go right] to the 1st page.
+(The files have been NOW downloaded into a NEW folder called e.g. B0CG3RL6VD.)
+(The folder name will be different for different books).
+I.e.
+/Android/data/com.amazon.kindle/files/B0CG3RL6VD
+
+Open the Settings App.
+Go to Storage.
+Scroll down and go to Explore and click on it to go into it.
+Go to ONEPLUS A5000
+Go to Android/data/com.amazon.kindle/files/B0CG3RL6VD.
+
+Long tap and old down on the NEW folder B0CG3RL6VD 
+until the folder is checkmarked in Green and higlighted in Green.
+At the windows upper right, select the vertical dots and choose "Copy To".
+From the upper left corner choose ONEPLUS A5000.
+Choose Download.
+At the right bottom, corner, press [COPY].
+
+Open the Media Manager App.
+Click on Explore.
+Scroll and go to Download and click on it.
+Click on the just copied new folder i.e B0CG3RL6VD (to go inside).
+At the bottom left, click Export to Windows.
+At the upper right, click Select All.
+At the upper right center, click Export to Windows. 
+  (The Windows "choose a folder" dialog pops up.)
+Choose PC > Downloads
+To the left of the folder list, right click and choose New -> Folder.
+Type in a name, e.g. FROM_BLUESTACKS_EXPORTED_TO_WINDOWS.
+Press Select Folder.
+Use Windows explorer, navigate to FROM_BLUESTACKS_EXPORTED_TO_WINDOWS.
+Notice, the largest file B0CG3RL6VD_EBOK.prc
+Drag and Drop this large file into Calibre 4.23 (that has DeDRM (6,8.0) by Apprentice Alf))
 
 The target (from the Amazon web site Devices tab) was . . .
 AndreMikulec's 2nd Android Device
@@ -398,6 +438,9 @@ Email : andre_mikulec_<OMITTED>@kindle.com
 Last registered on
 October 4, 2023
 
-That worked!
+The situation is best to rename to
+AndreMikulec's Android Device BLUESTACKS.
 ```
+
+
 
