@@ -182,7 +182,7 @@ https://www.reddit.com/r/Calibre/comments/hlj4z5/comment/fx0sjns/
     5. Use Calibre (or other software), to read those .awz3 files
 
 
-# Summary -Amazon books published since Jan 3 2023
+# Summary - Amazon books published since Jan 3 2023
 
  ```
 From an error message, seen October 3, 2023, a newer 2023 book, 
@@ -394,7 +394,7 @@ using the BlueStacks option "Install APK" [file].
 
 In the Bluestacks android Kindle com.amazon.kindle-4.16.0.75-1145045067-minAPI16
 login to Amazon with my username and password.
-My Books will be displayed.
+My books will be displayed.
 Tap my book of interest.
 (and now the book will open up to the cover page)
 Browse [go right] to the 1st page.
@@ -409,7 +409,7 @@ Scroll down and go to Explore and click on it to go into it.
 Go to ONEPLUS A5000
 Go to Android/data/com.amazon.kindle/files/B0CG3RL6VD.
 
-Long tap and old down on the NEW folder B0CG3RL6VD 
+Long tap and hold down on the NEW folder B0CG3RL6VD 
 until the folder is checkmarked in Green and higlighted in Green.
 At the windows upper right, select the vertical dots and choose "Copy To".
 From the upper left corner choose ONEPLUS A5000.
@@ -442,5 +442,27 @@ The situation is best to rename to
 AndreMikulec's Android Device BLUESTACKS.
 ```
 
+## Summary - Publisher books published ANYTIME and using Adobe Digital Editions 2.0.1
+Some small publishers are selling ebooks correlated with Adobe Digital Editions.
+These ebooks are custom DRMed Adobe Digital Editions PDFs.
+The user will EVENTUALLY aquire this PDF and this PDF can only be opened in 
+an "Adobe Digital Editions" software.
+
+To create a normal non-DRM non-"custom DRMed Adobe Digital Editions" PDF
+```
+Install Adobe Digital Editions 2.0.1 using the file ADE_2.0_Installer.exe.
+Choose Help->Authorize Computer.
+Make sure that "Adobe Id" is shown.
+Login to Adobe with my login and password. (Not sure if needed)
+From the "small publisher" site or their received email,
+download the publisher-provied .acsm file.
+Drag and drop this file into Adobe Digital Editions 2.0.1.
+Double click on the book (to maximize if it is not already maximized.)
+Choose File -> Show in Explorer.
+(The new DRMed PDF will show.)
+Drag and drop this new DRMed PDF into Calibre 4.23. (with DeDRM (6.8.0) By Apprentice Alf).
+(A new normal non-DRM non-"custom DRMed Adobe Digital Editions" PDF will be created.)
+```
+NOTE: Be sure to reverse out and clean up the mess of files and folders.
 
 
